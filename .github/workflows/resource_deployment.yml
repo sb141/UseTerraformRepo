@@ -13,17 +13,19 @@ env:
   ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
 jobs:
-  deploy:
+  terraform:
+    name: "Terraform"
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Azure CLI
-        uses: azure/login@v1
+      # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
       
       - name: Set Terraform backend key
         run: |
