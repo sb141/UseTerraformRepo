@@ -33,6 +33,7 @@ jobs:
 
 
       - name: Terraform Init
+        working-directory: iac
         run: terraform init
 
       - name: Terraform Plan
