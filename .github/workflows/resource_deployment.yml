@@ -31,14 +31,11 @@ jobs:
         run: |
           echo "az_storage_key=${{ secrets.AZURE_STORAGE_KEY }}" >> $GITHUB_ENV
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
         run: terraform init
 
       - name: Terraform Plan
-        id: plan
         run: terraform plan -input=false
 
       - name: Terraform Apply
