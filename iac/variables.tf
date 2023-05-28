@@ -10,7 +10,7 @@ variable "location" {
   type = string
 }
 
-variable "az_storage_key" {
-  description = "remote storage key"
-  type = string
-}
+# variable "az_storage_key" {
+#   description = "remote storage key"
+#   type = string
+# }
