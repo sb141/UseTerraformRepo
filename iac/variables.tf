@@ -9,3 +9,8 @@ variable "location" {
   default = "East US"
   type = string
 }
+
+variable "az_storage_key" {
+  description = "remote storage key"
+  type = string
+}
