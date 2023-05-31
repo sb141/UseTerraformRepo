@@ -14,6 +14,5 @@ terraform {
     storage_account_name = "staccstate123456"
     container_name       = "tstate"
     key                  = "terraform.tfstate"
-    access_key = ""
   }
 }
