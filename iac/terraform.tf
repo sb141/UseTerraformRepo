@@ -13,7 +13,6 @@ terraform {
     resource_group_name = "rg-storage_state"
     storage_account_name = "staccstate123456"
     container_name = "tstate"
-    key = "R3NCGJWk1QvbEu9c7LfsFjhqAsrYznHFTDVS+V4S72DGbFNhRyvax/qeFWXC4XN15BrUzPFhkTOJ+AStlbHEMA=="
-    # key = "var.az_storage_key"
+    key = "var.az_storage_key"
   }
 }
