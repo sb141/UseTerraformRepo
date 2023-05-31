@@ -12,6 +12,7 @@ env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
   ARM_ACCESS_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+  ROOT_PATH: '${{ github.workspace }}/iac'
 
 jobs:
   terraform:
@@ -20,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       
       - name: cli_run
         run: |
@@ -29,20 +30,22 @@ jobs:
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Init
-        working-directory: iac
+        working-directory: ${{env.ROOT_PATH}}
         run: terraform init
 
       - name: Terraform validate
-        working-directory: iac
+        working-directory: ${{env.ROOT_PATH}}
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: iac
+        working-directory: ${{env.ROOT_PATH}}
         run: terraform plan -input=false
 
       - name: Terraform Apply
-        working-directory: iac
+        working-directory: ${{env.ROOT_PATH}}
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve -input=false
