@@ -29,11 +29,11 @@ jobs:
       
       - name: Terraform Init
         working-directory: iac
-        run: terraform -chdir="./iac" init
+        run: terraform -chdir=iac/ init
 
       - name: Terraform Plan
-        run: terraform -chdir="./iac" plan -input=false
+        run: terraform -chdir=iac/ plan -input=false
 
       - name: Terraform Apply
         # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform -chdir="./iac" apply -auto-approve -input=false
+        run: terraform -chdir=iac/ apply -auto-approve -input=false
