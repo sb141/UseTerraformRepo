@@ -56,7 +56,7 @@ resource "azurerm_resource_group" "rg" {
 #   resource_group_name = data.azurerm_resource_group.network-rg.name
 #   location            = data.azurerm_resource_group.network-rg.location
 #   subnet_id           = data.azurerm_subnet.subnet.id
-  
+
 #   private_service_connection {
 #     name                           = "psc${azurerm_storage_account.adls.name}"
 #     private_connection_resource_id = azurerm_storage_account.adls.id
