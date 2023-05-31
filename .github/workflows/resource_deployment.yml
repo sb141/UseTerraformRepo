@@ -3,7 +3,7 @@ name: Terraform Deployment
 on:
   push:
     branches:
-      - main
+      - feature/infra
   workflow_dispatch:
 
 env:
@@ -20,6 +20,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      
+      - name: cli_run
+        run: |
+          ls
 
       # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
       - name: Setup Terraform
